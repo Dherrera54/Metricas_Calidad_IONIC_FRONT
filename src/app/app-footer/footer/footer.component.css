@@ -5,3 +5,9 @@
   top: 100%
 
 }
+.footer-link{
+  text-decoration:none;
+}
+.footer-link:hover{
+  font-weight:bold;
+}
