@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Usuario} from './usuario';
 
 @Injectable({
     providedIn: 'root'
@@ -18,4 +19,12 @@ export class UsuarioService {
     userSignUp(nombre: string, contrasena: string): Observable<any>{
         return this.http.post<any>(`${this.backUrl}/signin`, {"nombre": nombre, "contrasena": contrasena})
     }
+    getUsuario(usuario: number, token:string): Observable<Usuario>{
+        const headers = new HttpHeaders({
+          'Authorization':`Bearer ${token}`
+        })
+        console.log(`${this.backUrl}/usuario/${usuario}`,{headers: headers})
+        return this.http.get<Usuario>(`${this.backUrl}/usuario/${usuario}`, {headers: headers})
+    }
+
 }
