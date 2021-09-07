@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cancion } from './cancion';
 import { Album } from '../album/album';
+import {SharedAlbumModel} from "./models/shared-album-model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class CancionService {
 
   getCancionesAlbum(idAlbum: number, token: string): Observable<Cancion[]>{
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`       
+      'Authorization': `Bearer ${token}`
     })
     return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
   }
@@ -42,6 +43,14 @@ export class CancionService {
 
   eliminarCancion(cancionId: number): Observable<Cancion>{
     return this.http.delete<Cancion>(`${this.backUrl}/cancion/${cancionId}`)
+  }
+
+  compartirFavoritos(sharedAlbumModel: SharedAlbumModel, token: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    console.log(JSON.stringify(sharedAlbumModel));
+    return this.http.post<any>(`${this.backUrl}/compartir`, sharedAlbumModel, {headers: headers})
   }
 
 }

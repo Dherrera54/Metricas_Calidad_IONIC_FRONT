@@ -33,6 +33,7 @@
       <table class="table table-hover table-bordered" >
         <thead class="table-light">
           <tr>
+            <th scope="col" class="text-center">Compartir</th>
             <th scope="col" class="text-center">Título</th>
             <th scope="col" class="text-center">Año</th>
             <th scope="col" class="text-center">Medio</th>
@@ -40,12 +41,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let album of cancion?.albumes" >
-            <td >{{album.titulo}}</td>
+            <td><div class="container-share"><img src="assets/share.svg" (click)="shareAlbum(album)"></div></td>
+            <td>{{album.titulo}}</td>
             <td class="text-center">{{album.anio}}</td>
-            <td >{{album.medio.llave}}</td>
+            <td>{{album.medio.llave}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
+<app-pop-form  *ngIf="stateShare" (popup)="processPopup($event)"></app-pop-form>
+
+
