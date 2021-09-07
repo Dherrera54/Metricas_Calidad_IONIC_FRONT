@@ -23,7 +23,6 @@ export class UsuarioService {
         const headers = new HttpHeaders({
           'Authorization':`Bearer ${token}`
         })
-        console.log(`${this.backUrl}/usuario/${usuario}`,{headers: headers})
         return this.http.get<Usuario>(`${this.backUrl}/usuario/${usuario}`, {headers: headers})
     }
 

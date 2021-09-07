@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
   getUsuario():void{
     this.usuarioService.getUsuario(this.userId, this.token)
     .subscribe(usuario =>{
-      console.log(usuario.nombre)
       this.usuarioSeleccionado=usuario;})
 
   }
