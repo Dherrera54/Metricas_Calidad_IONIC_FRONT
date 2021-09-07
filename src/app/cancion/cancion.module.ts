@@ -6,15 +6,14 @@ import { CancionDetailComponent } from './cancion-detail/cancion-detail.componen
 import { CancionCreateComponent } from './cancion-create/cancion-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CancionEditComponent } from './cancion-edit/cancion-edit.component';
-import {AppModule} from "../app.module";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PopFormComponent} from "./pop-form/pop-form.component";
 
 
 
 @NgModule({
-  declarations: [CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent],
+  declarations: [CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent, PopFormComponent],
   imports: [
-    CommonModule, AppHeaderModule, ReactiveFormsModule, AppModule, BrowserAnimationsModule
+    CommonModule, AppHeaderModule, ReactiveFormsModule
   ],
   exports:[CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent]
 })
