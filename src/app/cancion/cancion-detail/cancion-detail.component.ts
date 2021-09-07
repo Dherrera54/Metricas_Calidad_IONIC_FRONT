@@ -19,8 +19,7 @@ export class CancionDetailComponent implements OnInit {
   userId: number;
   token: string;
   stateShare: boolean = false;
-  albumSelected: any;
-
+  cancionSelected:Cancion;
 
   constructor(
     private cancionService: CancionService,
@@ -43,8 +42,8 @@ export class CancionDetailComponent implements OnInit {
     this.routerPath.navigate([`/canciones/edit/${this.cancion.id}/${this.userId}/${this.token}`])
   }
 
-  shareAlbum(album: any): void {
-     this.albumSelected = album;
+  shareAlbum(cancion: Cancion): void {
+     this.cancionSelected = cancion;
      this.stateShare = true;
   }
 
@@ -57,7 +56,7 @@ export class CancionDetailComponent implements OnInit {
     if(model.acceptBtn) {
        if(model.text.length > 0) {
          this.stateShare = false;
-         this.cancionService.compartirFavoritos(new SharedAlbumModel(this.albumSelected, model.text, this.userId), this.token).subscribe(result=> {
+         this.cancionService.compartirFavoritos(new SharedAlbumModel(this.cancionSelected, model.text, this.userId), this.token).subscribe(result=> {
            this.toastr.error(JSON.stringify(result), "Solicitud exitosa");
          }, error => {
            this.toastr.error(JSON.stringify(error), "Solicitud fallida")
