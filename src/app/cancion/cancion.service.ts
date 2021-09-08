@@ -61,7 +61,6 @@ export class CancionService {
   }
 
   compartirFavoritos(sharedAlbumModel: SharedAlbumModel, token: string): Observable<any>{
-    console.log(JSON.stringify(sharedAlbumModel));
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     })
