@@ -1,11 +1,13 @@
+import {Cancion} from "../cancion";
+
 export class SharedAlbumModel {
-  album: any;
-  user: string;
+  idCancion: number;
+  amigos: string;
   idUser:number;
 
-  constructor(album: any, user: string, idUser: number) {
-    this.album = album;
-    this.user = user;
+  constructor(idCancion: number, amigos: string, idUser: number) {
+    this.idCancion = idCancion;
+    this.amigos = amigos;
     this.idUser = idUser;
   }
 }
