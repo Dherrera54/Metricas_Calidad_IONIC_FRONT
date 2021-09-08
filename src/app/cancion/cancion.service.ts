@@ -65,8 +65,7 @@ export class CancionService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     })
-    console.log(JSON.stringify(sharedAlbumModel));
-    return this.http.post<any>(`${this.backUrl}/compartir`, sharedAlbumModel, {headers: headers})
+    return this.http.post<any>(`${this.backUrl}/cancion/${sharedAlbumModel.idCancion}/usuarios`, sharedAlbumModel, {headers: headers})
   }
 
 }

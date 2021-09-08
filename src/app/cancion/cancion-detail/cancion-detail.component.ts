@@ -57,9 +57,9 @@ export class CancionDetailComponent implements OnInit {
        if(model.text.length > 0) {
          this.stateShare = false;
          this.cancionService.compartirFavoritos(new SharedAlbumModel(this.cancionSelected.id, model.text, this.userId), this.token).subscribe(result=> {
-           this.toastr.error(JSON.stringify(result), "Solicitud exitosa");
+           this.toastr.info(JSON.stringify(result.error), "Solicitud exitosa");
          }, error => {
-           this.toastr.error(JSON.stringify(error), "Solicitud fallida")
+           this.toastr.error(JSON.stringify(error.error), "Solicitud fallida")
          })
        } else {
          this.toastr.error("Debe ingresar algun usuario.", "Solicitud fallida")
