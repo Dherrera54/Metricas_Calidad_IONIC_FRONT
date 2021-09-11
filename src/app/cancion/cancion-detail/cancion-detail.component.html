@@ -2,7 +2,8 @@
 
   <div class="row">
     <div class="col-12 text-center mb-2" >
-      <label class="fs-4 fw-bold">Canción: {{cancion?.titulo}}</label>
+      <label class="fs-4 fw-bold">Canción: {{cancion?.titulo}}</label><div class="container-share">
+      <img src="assets/share.svg" (click)="shareAlbum(cancion)">
       <button *ngIf="cancion" type="button" class="btn btn-outline-success ms-3 me-2" (click)="goToEdit()" title="Editar canción"><i class="bi bi-pencil-square"></i></button>
       <button *ngIf="cancion" type="button" class="btn btn-outline-danger me-1" (click)="eliminarCancion()" title="Eliminar canción"><i class="bi bi-trash-fill"></i></button>
     </div>
@@ -27,7 +28,7 @@
 
   <div class="row">
     <div class="col-12 mt-3 mb-2 ms-2">
-      <h5>Álbumes</h5>
+        <h5>Álbumes</h5>
     </div>
     <div class="col-12">
       <table class="table table-hover table-bordered" >
@@ -40,12 +41,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let album of cancion?.albumes" >
-            <td >{{album?.titulo}}</td>
+            <td>{{album.titulo}}</td>
             <td class="text-center">{{album.anio}}</td>
-            <td >{{album?.medio?.llave}}</td>
+            <td>{{album.medio.llave}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<app-pop-form  *ngIf="stateShare" (popup)="processPopup($event)"></app-pop-form>
+
