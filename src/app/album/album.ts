@@ -49,18 +49,21 @@ export class Cancion{
     minutos: number;
     segundos: number;
     interprete: string;
+    usuario: number;
 
     constructor(
         id: number,
         titulo: string,
         minutos: number,
         segundos: number,
-        interprete: string
+        interprete: string,
+        usuario: number
     ){
         this.id = id,
         this.titulo = titulo,
         this.minutos = minutos,
         this.segundos = segundos,
-        this.interprete = interprete
+        this.interprete = interprete,
+        this.usuario = usuario
     }
 }

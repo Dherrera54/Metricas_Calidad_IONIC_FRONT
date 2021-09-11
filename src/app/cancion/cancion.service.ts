@@ -20,16 +20,22 @@ export class CancionService {
     return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
   }
 
-  getCanciones(): Observable<Cancion[]>{
-    return this.http.get<Cancion[]>(`${this.backUrl}/canciones`)
+  getCanciones(usuario: number, token: string): Observable<Cancion[]>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`       
+    })
+    return this.http.get<Cancion[]>(`${this.backUrl}/usuario/${usuario}/canciones`, {headers: headers})
   }
 
   getAlbumesCancion(cancionId: number): Observable<Album[]>{
     return this.http.get<Album[]>(`${this.backUrl}/cancion/${cancionId}/albumes`)
   }
 
-  crearCancion(cancion: Cancion):Observable<Cancion>{
-    return this.http.post<Cancion>(`${this.backUrl}/canciones`, cancion)
+  crearCancion(idUsuario: number, token: string, cancion: Cancion):Observable<Cancion>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`       
+    })
+    return this.http.post<Cancion>(`${this.backUrl}/usuario/${idUsuario}/canciones`, cancion, {headers: headers})
   }
 
   getCancion(cancionId: number): Observable<Cancion>{
