@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsuarioLoginComponent } from './usuario/usuario-login/usuario-login.component';
 import { AlbumListComponent } from './album/album-list/album-list.component';
@@ -9,6 +9,7 @@ import { CancionCreateComponent } from './cancion/cancion-create/cancion-create.
 import { CancionEditComponent } from './cancion/cancion-edit/cancion-edit.component';
 import { AlbumJoinCancionComponent } from './album/album-join-cancion/album-join-cancion.component';
 import { UsuarioSignupComponent } from './usuario/usuario-signup/usuario-signup.component';
+import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,11 @@ const routes: Routes = [
   {
     path: 'canciones/edit/:cancionId/:userId/:userToken',
     component: CancionEditComponent
-  }
+  },
+  {
+    path: 'perfil/:userId/:userToken',
+    component: UsuarioPerfilComponent
+  },
 ];
 
 @NgModule({
