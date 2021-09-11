@@ -7,13 +7,15 @@ import { CancionCreateComponent } from './cancion-create/cancion-create.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { CancionEditComponent } from './cancion-edit/cancion-edit.component';
 import {PopFormComponent} from "./pop-form/pop-form.component";
+import { AppFooterModule } from '../app-footer/app-footer.module';
+
 
 
 
 @NgModule({
   declarations: [CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent, PopFormComponent],
   imports: [
-    CommonModule, AppHeaderModule, ReactiveFormsModule
+    CommonModule, AppHeaderModule, ReactiveFormsModule,AppFooterModule
   ],
   exports:[CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent]
 })
