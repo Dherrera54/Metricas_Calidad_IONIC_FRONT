@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/tutorial-canciones",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
