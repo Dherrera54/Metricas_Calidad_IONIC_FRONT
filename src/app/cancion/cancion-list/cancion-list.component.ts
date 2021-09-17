@@ -22,6 +22,7 @@ export class CancionListComponent implements OnInit {
   token: string
   canciones: Array<Cancion>
   mostrarCanciones: Array<Cancion>
+  cancionesCompartidas: Array<Cancion>
   cancionSeleccionada: Cancion
   indiceSeleccionado: number = 0
 
@@ -33,6 +34,7 @@ export class CancionListComponent implements OnInit {
       this.userId = parseInt(this.router.snapshot.params.userId)
       this.token = this.router.snapshot.params.userToken
       this.getCanciones();
+      this.getCancionesCompartidas();
     }
   }
 
@@ -42,6 +44,16 @@ export class CancionListComponent implements OnInit {
       this.canciones = canciones
       this.mostrarCanciones = canciones
       this.onSelect(this.mostrarCanciones[0], 0)
+    })
+  }
+  getCancionesCompartidas():void{
+    this.cancionService.getCancionesCompartidasUsuario(this.userId, this.token)
+    .subscribe(canciones => {
+      this.cancionesCompartidas = canciones
+      for (var index in canciones)
+      {
+        this.mostrarCanciones.push(canciones[index])
+      }
     })
   }
 
