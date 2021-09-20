@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Cancion } from './cancion';
 import { Album } from '../album/album';
 import {SharedAlbumModel} from "./models/shared-album-model";
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CancionService {
 
-  private backUrl: string = "https://ionicgrupo3.herokuapp.com"
+  private backUrl: string = environment.URL_PRODUCTION
 
   constructor(private http: HttpClient) { }
 

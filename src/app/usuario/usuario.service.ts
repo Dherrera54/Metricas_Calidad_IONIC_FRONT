@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Usuario} from './usuario';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
   })
 export class UsuarioService {
 
-    private backUrl: string = "https://ionicgrupo3.herokuapp.com"
-
+    private backUrl: string = environment.URL_PRODUCTION
     constructor(private http: HttpClient) { }
 
     userLogIn(nombre: string, contrasena: string):Observable<any>{
