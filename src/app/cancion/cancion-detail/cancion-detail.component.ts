@@ -32,10 +32,13 @@ export class CancionDetailComponent implements OnInit {
     this.userId = parseInt(this.router.snapshot.params.userId)
     this.token = this.router.snapshot.params.userToken
 
+
   }
 
   eliminarCancion(){
+    console.log(this.cancion.titulo)
     this.deleteCancion.emit(this.cancion.id)
+
   }
 
   goToEdit(){

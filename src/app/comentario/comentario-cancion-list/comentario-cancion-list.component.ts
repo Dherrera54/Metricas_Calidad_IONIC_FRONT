@@ -9,7 +9,7 @@ export class ComentarioCancionListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit():void {
   }
 
 }

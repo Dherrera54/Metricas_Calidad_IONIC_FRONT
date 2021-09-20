@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CancionEditComponent } from './cancion-edit/cancion-edit.component';
 import {PopFormComponent} from "./pop-form/pop-form.component";
 import { AppFooterModule } from '../app-footer/app-footer.module';
+import { ComentarioModule } from '../comentario/comentario.module';
+
 
 
 
@@ -15,7 +17,7 @@ import { AppFooterModule } from '../app-footer/app-footer.module';
 @NgModule({
   declarations: [CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent, PopFormComponent],
   imports: [
-    CommonModule, AppHeaderModule, ReactiveFormsModule,AppFooterModule
+    CommonModule, AppHeaderModule, ReactiveFormsModule, AppFooterModule, ComentarioModule
   ],
   exports:[CancionListComponent, CancionDetailComponent, CancionCreateComponent, CancionEditComponent]
 })
