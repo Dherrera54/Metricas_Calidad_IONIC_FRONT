@@ -1,0 +1,20 @@
+.container{
+  padding-bottom: 15px;
+}
+
+.container-btn{
+
+  padding-bottom: 40px;
+  position: relative;
+}
+.send-btn{
+  position:absolute;
+  right: 10px;
+
+}
+.text-area{
+  padding-bottom: 15px;
+}
+.new-comment-header{
+  font-weight: bold;
+}

@@ -49,9 +49,14 @@
       </table>
     </div>
   </div>
-  <div >
-    <app-comentario-cancion-list ></app-comentario-cancion-list>
-    <app-comentario-cancion-create [cancion]="cancion" ></app-comentario-cancion-create>
+  <div class="container my-4">
+    <div class="card">
+      <div class="card-header">
+        Comentarios
+      </div>
+        <app-comentario-cancion-list [cancion]="cancion"></app-comentario-cancion-list>
+        <app-comentario-cancion-create [cancion]="cancion" ></app-comentario-cancion-create>
+      </div>
   </div>
 </div>
 <app-pop-form  *ngIf="stateShare" (popup)="processPopup($event)"></app-pop-form>

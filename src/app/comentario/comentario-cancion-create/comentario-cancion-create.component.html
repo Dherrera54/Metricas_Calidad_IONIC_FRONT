@@ -1,13 +1,14 @@
 <div class="container">
-  <p>Añadir comentario:</p>
-  <form class="mx-5 my-3" [formGroup]="comentarioForm" (ngSubmit)="createComment(comentarioForm.value)">
+
+  <form class="" [formGroup]="comentarioForm" (ngSubmit)="createComment(comentarioForm.value)">
+      <p class="new-comment-header">Añadir comentario:</p>
       <div class="form-group my-2">
         <div class="row">
-          <div class="col-10">
-            <input type="text" class="form-control" formControlName="comentario" placeholder="Ingresa nuevo comentario">
+          <div class="">
+            <textarea type="text" class="text-area form-control input-lg" formControlName="comentario" placeholder="Ingresa tu nuevo comentario..."></textarea>
           </div>
               <div class="row justify-content-center">
-                <div class="col-8">
+                <div class="">
                   <div class="alert alert-danger my-3" *ngIf="comentarioForm.get('comentario')?.hasError('maxlength')">
                     El comentario no debe exceder los 255 carácteres
                   </div>
@@ -16,8 +17,8 @@
        </div>
 
       </div>
-      <div class="col-6 text-start">
-        <button type="submit" class="btn btn-primary" [disabled]="!comentarioForm.valid">Crear</button>
+      <div class=" text-start container-btn">
+        <button type="submit" class="btn btn-primary btn-group-lg send-btn" [disabled]="!comentarioForm.valid"><span class="bi bi-forward" aria-hidden="true">  Enviar</span></button>
       </div>
   </form>
 </div>
