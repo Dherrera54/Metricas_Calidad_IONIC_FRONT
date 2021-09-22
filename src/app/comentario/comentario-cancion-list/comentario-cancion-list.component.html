@@ -1,13 +1,18 @@
 <div class="container my-4">
   <div>
     <div class="card">
-      <table>
-        <tr *ngFor="let comentario of mostrarComentarios; index as i">
-          <td>
-             <span class="d-block p-2 bg-primary text-white">{{comentario?.comentario}}</span>
-          </td>
-        </tr>
-      </table>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-striped">
+          <thead></thead>
+          <tbody>
+            <tr scope="row" *ngFor="let comentario of mostrarComentarios; index as i">
+              <td>
+                <span class="d-block p-2">{{comentario?.comentario}}  {{comentario?.usuario}}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
-
   </div>
+
+</div>
