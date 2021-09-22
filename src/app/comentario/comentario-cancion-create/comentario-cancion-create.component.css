@@ -12,6 +12,11 @@
   right: 10px;
 
 }
+.cancel.btn{
+  position:relative;
+  right: 100px;
+
+}
 .text-area{
   padding-bottom: 15px;
 }

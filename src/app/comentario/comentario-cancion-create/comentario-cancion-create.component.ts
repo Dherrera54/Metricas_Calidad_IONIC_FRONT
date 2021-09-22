@@ -67,4 +67,8 @@ showSuccess() {
   this.toastr.success(`Comentario creado con exito en ${this.cancion.titulo} `, "Creación exitosa");
 }
 
+cancelCreate(){
+  this.comentarioForm.reset()
+}
+
 }
