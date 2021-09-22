@@ -20,7 +20,7 @@
             <th scope="row">{{i}}</th>
             <td>{{getName(item.id)}}</td>
             <td>{{item.mensaje}}</td>
-            <td>{{item.fecha}}</td>
+            <td>{{item.fecha | date: 'full'}}</td>
             <td><img src="assets/{{getIcon(item.id)}}" (click)="checkRead(item.id)"></td>
           </tr>
           </tbody>
