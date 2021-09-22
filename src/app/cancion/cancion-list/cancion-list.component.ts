@@ -20,6 +20,7 @@ export class CancionListComponent implements OnInit {
 
   userId: number
   token: string
+  cancionId:number
   canciones: Array<Cancion>
   mostrarCanciones: Array<Cancion>
   cancionesCompartidas: Array<Cancion>
@@ -33,6 +34,7 @@ export class CancionListComponent implements OnInit {
     else{
       this.userId = parseInt(this.router.snapshot.params.userId)
       this.token = this.router.snapshot.params.userToken
+      this.cancionService.currentMessage.subscribe(cancionID => this.cancionId=cancionID)
       this.getCanciones();
     }
   }
@@ -61,6 +63,7 @@ export class CancionListComponent implements OnInit {
   onSelect(cancion: Cancion, indice: number){
     this.indiceSeleccionado = indice
     this.cancionSeleccionada = cancion
+    this.shareSongId(cancion.id)
     this.cancionService.getAlbumesCancion(cancion.id)
     .subscribe(albumes => {
       this.cancionSeleccionada.albumes = albumes
@@ -69,6 +72,9 @@ export class CancionListComponent implements OnInit {
       this.showError(`Ha ocurrido un error: ${error.message}`)
     })
 
+  }
+  shareSongId(songID:number){
+  this.cancionService.shareCancionId(songID)
   }
 
   buscarCancion(busqueda: string){

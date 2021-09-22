@@ -5,6 +5,7 @@ import {PopupModel} from "../models/popup-model";
 import {CancionService} from "../cancion.service";
 import {ToastrService} from "ngx-toastr";
 import {SharedAlbumModel} from "../models/shared-album-model";
+import { ComentarioCancionService } from '../../comentario/comentario-cancion.service';
 
 @Component({
   selector: 'app-cancion-detail',
@@ -23,6 +24,7 @@ export class CancionDetailComponent implements OnInit {
 
   constructor(
     private cancionService: CancionService,
+    private comentarioService: ComentarioCancionService,
     private toastr: ToastrService,
     private router: ActivatedRoute,
     private routerPath: Router

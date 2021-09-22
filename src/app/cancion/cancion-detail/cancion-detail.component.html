@@ -41,15 +41,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let album of cancion?.albumes" >
-            <td>{{album.titulo}}</td>
-            <td class="text-center">{{album.anio}}</td>
-            <td>{{album.medio.llave}}</td>
+            <td>{{album?.titulo}}</td>
+            <td class="text-center">{{album?.anio}}</td>
+            <td>{{album?.medio?.llave}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="container my-4">
+  <div class="container col-12  my-4">
     <div class="card">
       <div class="card-header">
         Comentarios

@@ -22,4 +22,8 @@ export class ComentarioCancionService {
     return this.http.post<Comentario>(`${this.backUrl}/cancion/${idCancion}/usuario/${idUsuario}/comentarios`, comentario, {headers: headers})
   }
 
+  getComentariosCancion(idCancion:number):Observable<Comentario[]>{
+    return this.http.get<Comentario[]>(`${this.backUrl}/cancion/${idCancion}/comentarios`)
+  }
+
 }

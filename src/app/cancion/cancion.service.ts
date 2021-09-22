@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject} from 'rxjs';
 import { Cancion } from './cancion';
 import { Album } from '../album/album';
 import {SharedAlbumModel} from "./models/shared-album-model";
@@ -13,6 +13,10 @@ export class CancionService {
 
   private backUrl: string = environment.URL_PRODUCTION
 
+  private messageSource = new BehaviorSubject<number>(-1)
+
+currentMessage =this.messageSource.asObservable();
+
   constructor(private http: HttpClient) { }
 
   getCancionesAlbum(idAlbum: number, token: string): Observable<Cancion[]>{
@@ -20,6 +24,10 @@ export class CancionService {
       'Authorization': `Bearer ${token}`
     })
     return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
+  }
+
+  shareCancionId(id: number){
+    this.messageSource.next(id)
   }
 
   getCanciones(usuario: number, token: string): Observable<Cancion[]>{

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comentario } from '../comentario';
 import { ComentarioCancionService } from '../comentario-cancion.service';
 import { Cancion } from '../../cancion/cancion';
+import { CancionService } from '../../cancion/cancion.service';
 @Component({
   selector: 'app-comentario-cancion-create',
   templateUrl: './comentario-cancion-create.component.html',
@@ -22,6 +23,7 @@ export class ComentarioCancionCreateComponent implements OnInit {
   constructor(
     private comentarioService: ComentarioCancionService,
     private formBuilder: FormBuilder,
+    private cancionService:CancionService,
     private router: ActivatedRoute,
     private toastr: ToastrService
   ) { }
@@ -34,11 +36,11 @@ export class ComentarioCancionCreateComponent implements OnInit {
     })
   }
   createComment( newComment :Comentario){
-
     this.comentarioService.crearComentarioCancion(this.userId, this.cancion.id, newComment, this.token)
     .subscribe(comentario => {
       this.showSuccess()
       this.comentarioForm.reset()
+      this.cancionService.shareCancionId(this.cancion.id)
   },
   error=> {
     if(error.statusText === "UNAUTHORIZED"){
