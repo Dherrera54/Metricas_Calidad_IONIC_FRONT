@@ -48,7 +48,7 @@ export class CancionListComponent implements OnInit {
     this.cancionService.getCancionesCompartidasUsuario(this.userId, this.token)
     .subscribe(canciones => {
       this.cancionesCompartidas = canciones
-      if (canciones !== undefined)
+      if (typeof canciones !== 'undefined')
       {
         for (var index in canciones)
         {
