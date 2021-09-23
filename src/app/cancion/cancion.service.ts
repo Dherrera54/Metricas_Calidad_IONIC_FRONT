@@ -21,9 +21,16 @@ export class CancionService {
     return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
   }
 
+  getNotificacion(idAlbum: number, token: string): Observable<Cancion[]>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
+  }
+
   getCanciones(usuario: number, token: string): Observable<Cancion[]>{
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`       
+      'Authorization': `Bearer ${token}`
     })
     return this.http.get<Cancion[]>(`${this.backUrl}/usuario/${usuario}/canciones`, {headers: headers})
   }
@@ -42,7 +49,7 @@ export class CancionService {
 
   crearCancion(idUsuario: number, token: string, cancion: Cancion):Observable<Cancion>{
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`       
+      'Authorization': `Bearer ${token}`
     })
     return this.http.post<Cancion>(`${this.backUrl}/usuario/${idUsuario}/canciones`, cancion, {headers: headers})
   }
