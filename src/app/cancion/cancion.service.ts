@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject} from 'rxjs';
 import { Cancion } from './cancion';
 import { Album } from '../album/album';
 import {SharedAlbumModel} from "./models/shared-album-model";
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CancionService {
 
-  private backUrl: string = "https://ionicgrupo3.herokuapp.com"
+  private backUrl: string = environment.URL_PRODUCTION
+
+  private messageSource = new BehaviorSubject<number>(-1)
+
+currentMessage =this.messageSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +26,10 @@ export class CancionService {
     return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
   }
 
+  shareCancionId(id: number){
+    this.messageSource.next(id)
+
+  }
   getNotificacion(idAlbum: number, token: string): Observable<Cancion[]>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -33,6 +42,13 @@ export class CancionService {
       'Authorization': `Bearer ${token}`
     })
     return this.http.get<Cancion[]>(`${this.backUrl}/usuario/${usuario}/canciones`, {headers: headers})
+  }
+
+  getCancionesCompartidasUsuario(usuario: number, token: string): Observable<Cancion[]>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get<Cancion[]>(`${this.backUrl}/usuario/${usuario}/cancionescompartidas`, {headers: headers})
   }
 
 
