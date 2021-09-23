@@ -28,6 +28,13 @@ currentMessage =this.messageSource.asObservable();
 
   shareCancionId(id: number){
     this.messageSource.next(id)
+
+  }
+  getNotificacion(idAlbum: number, token: string): Observable<Cancion[]>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get<Cancion[]>(`${this.backUrl}/album/${idAlbum}/canciones`, {headers: headers})
   }
 
   getCanciones(usuario: number, token: string): Observable<Cancion[]>{

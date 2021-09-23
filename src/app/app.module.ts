@@ -12,6 +12,7 @@ import { AppHeaderModule } from './app-header/app-header.module';
 import { CancionModule } from './cancion/cancion.module';
 import { AppFooterModule } from './app-footer/app-footer.module';
 import { ComentarioModule } from './comentario/comentario.module';
+import { PopFormNotificationComponent } from './app-header/pop-form-notification/pop-form-notification.component';
 
 @NgModule({
   declarations: [
