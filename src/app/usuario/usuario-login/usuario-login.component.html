@@ -33,8 +33,8 @@
         <div class="col-12 text-center mt-3">
           <button (click)="onLogInUsuario(usuario.value, contrasena.value)" type="button" class="btn btn-primary col-8">Ingresar</button>
         </div>
-        <div class="col-12 text-center mt-2">
-          <p>¿No tienes cuenta? <a href="/signup">Registrate</a></p>
+        <div class="col-12 text-center mt-2" (click)="goRegister()">
+          <p>¿No tienes cuenta? <a>Registrate</a></p>
         </div>
       </div>
     </div>

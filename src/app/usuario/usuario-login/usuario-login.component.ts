@@ -36,4 +36,8 @@ export class UsuarioLoginComponent implements OnInit {
     })
   }
 
+  goRegister() {
+    this.router.navigate([`/signup/`])
+  }
+
 }
