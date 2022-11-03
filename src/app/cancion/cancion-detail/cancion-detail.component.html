@@ -13,7 +13,15 @@
     <div class="col-6">
       <div class="card">
         <div class="card-body">
-          <p class="my-0"><span class="fw-bold">Duración: </span> <span class="text-capitalize">{{cancion?.minutos}}:{{cancion?.segundos}}</span></p>
+          <div class="my-0"><span class="fw-bold">Duración: </span>
+             <div *ngIf="cancion && cancion.segundos<10; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                  <span class="text-capitalize">{{cancion?.minutos}}:0{{cancion?.segundos}}</span>
+                </ng-template>
+                <ng-template #elseBlock>
+                  <span class="text-capitalize">{{cancion?.minutos}}:{{cancion?.segundos}}</span>
+                </ng-template>
+          </div>
         </div>
       </div>
     </div>
@@ -41,14 +49,22 @@
         </thead>
         <tbody>
           <tr *ngFor="let album of cancion?.albumes" >
-            <td>{{album.titulo}}</td>
-            <td class="text-center">{{album.anio}}</td>
-            <td>{{album.medio.llave}}</td>
+            <td>{{album?.titulo}}</td>
+            <td class="text-center">{{album?.anio}}</td>
+            <td>{{album?.medio?.llave}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <div class="container col-12  my-4">
+    <div class="card">
+      <div class="card-header">
+        Comentarios
+      </div>
+        <app-comentario-cancion-list [cancion]="cancion"></app-comentario-cancion-list>
+        <app-comentario-cancion-create [cancion]="cancion" ></app-comentario-cancion-create>
+      </div>
+  </div>
 </div>
 <app-pop-form  *ngIf="stateShare" (popup)="processPopup($event)"></app-pop-form>
-

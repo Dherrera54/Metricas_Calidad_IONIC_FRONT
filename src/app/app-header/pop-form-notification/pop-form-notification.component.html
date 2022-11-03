@@ -1,0 +1,40 @@
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="container-input" *ngIf="notification !== undefined && notification.length > 0" >
+      <label class="inp-text">Notificaciones</label>
+      <div>
+        <table class="table">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Mensaje</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Opciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of notification; let i = index">
+            <th scope="row">{{i}}</th>
+            <td>{{item.mensaje}}</td>
+            <td>{{item.fecha | date: 'full'}}</td>
+            <td><img src="assets/{{getIcon(item.id)}}" (click)="checkRead(item.id)"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="warning" *ngIf="notification === undefined || notification.length  <= 0" >
+      <img src="assets/notification.svg" class="log-warning">
+      <div class="message-warning">
+        <span>No tiene notificaciones</span>
+      </div>
+    </div>
+    <div class="container-buttons">
+      <button type="button" class="btn btn-dark" (click)="cancel()">Cerrar</button>
+    </div>
+  </div>
+
+
+</div>

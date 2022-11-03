@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Album} from './album';
 import { Cancion } from '../cancion/cancion';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumService {
 
-  private backUrl: string = "https://ionicgrupo3.herokuapp.com"
+  private backUrl: string = environment.URL_PRODUCTION
 
   constructor(private http: HttpClient) { }
 
